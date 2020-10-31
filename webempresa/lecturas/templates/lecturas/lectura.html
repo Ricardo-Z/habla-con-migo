@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <section class="page-section cta" style="background-color: transparent;padding-top: inherit; padding-bottom: inherit;">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-innerv text-center rounded">
+              <h2 class="section-heading">
+                <span class="section-heading-upper">{{post.published|date:"SHORT_DATE_FORMAT"}}</span>
+                <span class="section-heading-lower">{{post.title}}</span>
+              </h2>
+              <p class="">
+                {{post.content|linebreaks}}
+              </p>
+              <a href="{{post.image.url}}" download="{{post.title}}">
+                Descargar Lectura
+              </a>
+              <p class="mb-0 mbt">
+                <span class="section-heading-under">Publicado por <em><b>{{post.author}}</b></em>.<em>
+                </span>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endblock %}
+
+
+    
